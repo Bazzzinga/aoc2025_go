@@ -80,20 +80,17 @@ func countFresh2() uint64 {
 	var lastMax uint64
 
 	for _, f := range fresh {
-		if lastMax == 0 {
-			lastMax = f[1]
+		if lastMax < f[0] {
 			res += f[1] - f[0] + 1
 		} else {
-			if lastMax < f[0] {
-				lastMax = f[1]
-				res += f[1] - f[0] + 1
-			} else {
-				newMin := lastMax + 1
-				if newMin <= f[1] {
-					lastMax = f[1]
-					res += f[1] - newMin + 1
-				}
+			newMin := lastMax + 1
+			if newMin <= f[1] {
+				res += f[1] - newMin + 1
 			}
+		}
+
+		if lastMax < f[1] {
+			lastMax = f[1]
 		}
 	}
 
