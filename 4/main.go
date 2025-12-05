@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"strings"
+	"time"
 )
 
 const inputFileName = "input"
@@ -35,7 +36,7 @@ func mainV1() {
 		{1, 0},
 		{1, 1},
 	}
-
+	now := time.Now()
 	for scanner.Scan() {
 		line := scanner.Text()
 
@@ -71,6 +72,9 @@ func mainV1() {
 			grid[remove[i][0]][remove[i][1]] = "."
 		}
 	}
+	now2 := time.Now()
+
+	fmt.Println(now2.Sub(now))
 
 	fmt.Println(res1)
 	fmt.Println(res2)

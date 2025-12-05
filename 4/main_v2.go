@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"strings"
+	"time"
 )
 
 const inputFileName = "input"
@@ -29,7 +30,7 @@ func main() {
 	scanner := bufio.NewScanner(file)
 
 	cells = make([][]*cell, 0)
-
+	now := time.Now()
 	for scanner.Scan() {
 		line := scanner.Text()
 
@@ -60,11 +61,12 @@ func main() {
 		}
 		removed = true
 
-		printGrid()
+		//printGrid()
 
 		removeMarked()
 	}
-
+	now2 := time.Now()
+	fmt.Println(now2.Sub(now))
 	fmt.Println(res1)
 	fmt.Println(res2)
 }
